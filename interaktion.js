@@ -38,7 +38,7 @@ function showBoard ( game )
             var span = td.firstElementChild;
             if (game.board[i][j])
             {
-                span.innerHTML = game.board[i][j].value + 1;
+                span.innerHTML = game.board[i][j].value;
             }
             else
             {
