@@ -1,26 +1,32 @@
 var cells = document.querySelectorAll(".cell");
-for (var item in cells)
+for (var i = 0;  i < cells.length; i++)
 {
-    //TODO fige how to get x and y
+    //TODO figure how to get x and y := we get it from DOM
+    var cell = cells[i];
+    var x = cell.cellIndex;
+    var y = cell.parentNode.rowIndex;
 
-    item.addEventListener("click", function( event ) {
-        if (game.board.[x][y].canMove())
+    cell.addEventListener("click", function( event ) {
+        if (game.canBrickMove(x, y))
         {
-            game.board.[x][y].move();
+            game.moveBrick(x, y);
+            showBoard(game)
         }
     }, false);
 
-    item.addEventListener("mouseenter"), function( event ) {
+    cell.addEventListener("mouseenter", function( event ) {
+        1+1;
         // set css for movable, if canMove()
     }, false);
-    item.addEventListener("mouseleave"), function( event ) {
+    cell.addEventListener("mouseleave", function( event ) {
+        1+1;
         //reset css
     }, false);
 }
 
-function showBoard ( board )
+function showBoard ( game )
 {
-    for (var collumn in board)
+    for (var collumn in game.board)
     {
         for (var brick in collumn)
         {
@@ -28,3 +34,5 @@ function showBoard ( board )
         }
     }
 }
+
+var game = new Game(2);
