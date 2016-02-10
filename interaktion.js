@@ -7,6 +7,8 @@ for (var i = 0;  i < cells.length; i++)
     var y = cell.parentNode.rowIndex;
 
     cell.addEventListener("click", function( event ) {
+        var x = this.parentNode.rowIndex;
+        var y = this.cellIndex;
         if (game.canBrickMove(x, y))
         {
             game.moveBrick(x, y);
@@ -26,13 +28,26 @@ for (var i = 0;  i < cells.length; i++)
 
 function showBoard ( game )
 {
-    for (var collumn in game.board)
+    for (var i = 0; i < game.board.length; i++)
     {
-        for (var brick in collumn)
+        var tr = gamepad.firstElementChild.children[i];
+        var collumn = game.board[i];
+        for (var j = 0; j < collumn.length; j++)
         {
+            var td = tr.children[j];
+            var span = td.firstElementChild;
+            if (game.board[i][j])
+            {
+                span.innerHTML = game.board[i][j].value + 1;
+            }
+            else
+            {
+                td.innerHTML = "";
+            }
 
         }
     }
 }
 
 var game = new Game(2);
+showBoard(game);
