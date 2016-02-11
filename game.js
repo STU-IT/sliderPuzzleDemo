@@ -11,7 +11,6 @@ function Game(n)
     }
     this.board[n-1][n-1] = new Brick(null);
     this.emptyBrickPossition = {'x':n-1, 'y':n-1};
-
 }
 
 function Brick(n, board)
@@ -46,5 +45,4 @@ Game.prototype.moveBrick = function(x, y)
     this.board[this.emptyBrickPossition.x][this.emptyBrickPossition.y] = tempBrick;
 
     this.emptyBrickPossition = {'x':x, 'y':y};
-
 }

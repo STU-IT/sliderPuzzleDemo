@@ -45,34 +45,26 @@ function showBoard ( game )
     }
     for (var i = 0; i < game.board.length; i++)
     {
-        //var tr = gamepad.firstElementChild.children[i];
         var tr = document.createElement("tr");
-        gamepad.appendChild(tr);
 
         var collumn = game.board[i];
         for (var j = 0; j < collumn.length; j++)
         {
             var td = document.createElement("td");
-            td.classList.add("cell");
-            tr.appendChild(td);
-
-            var span = document.createElement("span");
-            td.appendChild(span);
-
-            if (game.board[i][j])
+            if (game.board[i][j].value != null)
             {
-                span.innerHTML = game.board[i][j].value;
                 td.addEventListener("click", clickOnBrick, false);
-            }
-            else
-            {
-                td.innerHTML = "";
-                td.class = "";
+                td.classList.add("cell");
+                var span = document.createElement("span");
+                span.innerHTML = game.board[i][j].value;
+                td.appendChild(span);
             }
 
+            tr.appendChild(td);
+            gamepad.appendChild(tr);
         }
     }
 }
 
-var game = new Game(3);
+var game = new Game(2);
 showBoard(game);
